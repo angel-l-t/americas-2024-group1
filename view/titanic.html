@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="titanic.css" type="text/css">
+    <script type="text/javascript" src="titanic.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable( titanic );
+
+        var options = {
+          title: 'Sakai Developer Email Participation by Organization',
+          chartArea: {left:'10%',top:'10%', width: '65%', height: '65%'}
+        };
+
+        var BarChart = new google.visualization.BarChart(document.getElementById('BarChart_div'));
+        var PieChart = new google.visualization.PieChart(document.getElementById('PieChart_div'));
+        var LineChart = new google.visualization.LineChart(document.getElementById('LineChart_div'));
+        BarChart.draw(data, options);
+        PieChart.draw(data, options);
+        LineChart.draw(data, options);
+      }
+      
+    </script>
+    
+  </head>
+  <body>
+    <div class="container">
+    <div id="BarChart_div" >
+      
+    </div>
+    <div id="PieChart_div" ></div>
+    <div id="LineChart_div" ></div>
+    </div>
+  </body>
+</html>
