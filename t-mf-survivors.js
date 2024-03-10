@@ -1,5 +1,3 @@
-titanic = [ ['Gender and status', 'Number'],['Male survivors', 161],
-['Male deceased', 682],
-['Female survivors', 339],
+titanic = [ ['Gender and status', 'Number'],['Male deceased', 682],
 ['Female deceased', 127]
 ];

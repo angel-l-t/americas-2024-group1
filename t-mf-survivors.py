@@ -7,14 +7,6 @@ conn = sqlite3.connect('titanicdb.sqlite')
 cursor = conn.cursor()
 
 # Execute a SQL query to retrieve data and fetch data
-cursor.execute("SELECT COUNT(*) FROM Titanic WHERE survived = 'survived' AND sex = 'male'")
-
-male_survivors = cursor.fetchall()
-
-cursor.execute("SELECT COUNT(*) FROM Titanic WHERE survived = 'survived' AND sex = 'female'")
-
-female_survivors = cursor.fetchall()
-
 cursor.execute("SELECT COUNT(*) FROM Titanic WHERE survived = 'died' AND sex = 'male'")
 
 male_deceased = cursor.fetchall()
@@ -28,17 +20,13 @@ cursor.close()
 conn.close()
 
 # Print data (for demonstration)
-print("Male survivors", male_survivors[0][0])
-print("Female survivors", female_survivors[0][0])
 print("Male deceased", male_deceased[0][0])
 print("Female deceased", female_deceased[0][0])
 
 # Write data to t-mf-survivors.js for visualization
 fhand = open('t-mf-survivors.js','w')
 fhand.write("titanic = [ ['Gender and status', 'Number'],")
-fhand.write(f"['Male survivors', {male_survivors[0][0]}],\n")
 fhand.write(f"['Male deceased', {male_deceased[0][0]}],\n")
-fhand.write(f"['Female survivors', {female_survivors[0][0]}],\n")
 fhand.write(f"['Female deceased', {female_deceased[0][0]}]\n")
 fhand.write("];\n")
 fhand.close()
