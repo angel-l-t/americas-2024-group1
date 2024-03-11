@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="titanic.css" type="text/css" />
+    <script type="text/javascript" src="survived_avg.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', { packages: ['corechart'] });
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(titanic);
+
+        var options = {
+          title: 'Average Number of Survivors by Gender',
+          chartArea: { left: '10%', top: '10%', width: '80%', height: '80%' },
+          hAxis: { title: 'Survival Rate (%)', minValue: 0, maxValue: 100 },
+          vAxis: { title: 'Gender', minValue: 0, maxValue: 100 },
+          legend: { position: 'top' },
+          colors: ['#ff6347', '#4682b4'],
+        };
+
+        var barChart = new google.visualization.BarChart(
+          document.getElementById('barChart_div')
+        );
+        barChart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="barChart_div"></div>
+    </div>
+  </body>
+</html>
